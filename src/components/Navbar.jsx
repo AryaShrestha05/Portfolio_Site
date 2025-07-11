@@ -6,18 +6,19 @@ const Navbar = () => {
   const navRef = useRef(null);
 
   const handleMouseEnter = () => {
-    gsap.to(navRef.current, { y: -5, duration: 0.3, ease: 'power1.out' });
+    gsap.to(navRef.current, { y: -5, scale: 1.01, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.25)', duration: 0.4, ease: 'power2.out' });
   };
-
+  
   const handleMouseLeave = () => {
-    gsap.to(navRef.current, { y: 0, duration: 0.3, ease: 'power1.out' });
+    gsap.to(navRef.current, { y: 0, scale: 1, boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)', duration: 0.4, ease: 'power2.inOut' });
   };
 
   return (
     <nav>
       <div
+        id='navbar-gsap'
         ref={navRef}
-        className='bg-gray-950 rounded-xl my-7 shadow-xs shadow-gray-600 hover:shadow-lg shadow-gray-600 transition-shadow duration-300 p-4 backdrop-blur-2xl'
+        className='bg-gradient-to-r from-gray-900 via-gray-950 to-gray-900 rounded-xl my-7 px-6 py-3'
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
