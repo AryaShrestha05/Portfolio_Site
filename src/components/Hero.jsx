@@ -7,29 +7,45 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const trigRef = useRef();
   const trigRefTwo = useRef();
+  const btnRef = useRef();
 
+  //Scrolltrigger animation
   useEffect(() => {
-    // Animate first heading to the left
-    gsap.to(trigRef.current, {
-      x: -500,
+    const textTop = gsap.timeline();
+    const textBottom = gsap.timeline();
+    const button = gsap.timeline();
+
+    // Entrance animations
+    textTop.fromTo(
+      trigRef.current,
+      { opacity: 0, x: 100 },
+      { opacity: 1, x: 0, duration: 1.5, ease: "power2.out" }
+    );
+
+    textBottom.fromTo(
+      trigRefTwo.current,
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 1.5, ease: "power2.out" }
+    );
+
+    button.fromTo(
+      btnRef.current,
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
+    );
+
+    // Scroll-based animation
+    const scrollAnimation = gsap.timeline({
       scrollTrigger: {
-        trigger: trigRef.current,
-        start: 'top center',
-        end: 'bottom top',
-        scrub: true,
+        trigger: "#hero",
+        start: "top top",
+        end: "+=1500",
+        scrub: 1,
       },
     });
 
-    // Animate second heading to the right
-    gsap.to(trigRefTwo.current, {
-      x: 500,
-      scrollTrigger: {
-        trigger: trigRefTwo.current,
-        start: 'top center',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
+    scrollAnimation.to(trigRef.current, { x: -300, ease: "none" }, 0)
+      .to(trigRefTwo.current, { x: 300, ease: "none" }, 0);
   }, []);
 
   return (
@@ -39,9 +55,9 @@ const Hero = () => {
     >
       <h1
         ref={trigRef}
-        className="text-9xl font-light whitespace-nowrap"
+        className="text-9xl font-thin whitespace-nowrap"
       >
-        Arya Arya Arya Arya Arya Arya Arya Arya Arya Arya Arya
+        Arya Arya Arya Arya Arya Arya Arya Arya Arya Arya
       </h1>
       <h1
         ref={trigRefTwo}
@@ -49,6 +65,13 @@ const Hero = () => {
       >
         Shrestha Shrestha Shrestha Shrestha Shrestha Shrestha
       </h1>
+      <button
+        ref={btnRef}
+        className="flex-center bg-transparent border-2 border-amber-50 transition-smooth rounded-full px-8 py-2 text-2xl
+        hover:bg-white hover:text-black"
+      >
+        resume
+      </button>
     </section>
   );
 };
