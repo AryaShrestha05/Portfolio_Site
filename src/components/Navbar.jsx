@@ -18,7 +18,7 @@ const Navbar = () => {
       <div
         id='navbar-gsap'
         ref={navRef}
-        className='bg-gradient-to-r from-gray-900 via-gray-950 to-gray-900 rounded-xl my-7 px-6 py-3'
+        className='bg-gradient-to-r from-gray-900 via-transparent to-gray-900 rounded-xl my-7 px-6 py-3'
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
