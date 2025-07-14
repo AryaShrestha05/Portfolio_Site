@@ -9,13 +9,13 @@ const Hero = () => {
   const trigRefTwo = useRef();
   const btnRef = useRef();
 
-  //Scrolltrigger animation
+  //GSAP Animations
   useEffect(() => {
     const textTop = gsap.timeline();
     const textBottom = gsap.timeline();
     const button = gsap.timeline();
 
-    // Entrance animations
+    //Arya and Shrestha Entrance animations
     textTop.fromTo(
       trigRef.current,
       { opacity: 0, x: 100 },
@@ -27,14 +27,14 @@ const Hero = () => {
       { opacity: 0, x: -100 },
       { opacity: 1, x: 0, duration: 1.5, ease: "power2.out" }
     );
-
+    //Button entrance animation
     button.fromTo(
       btnRef.current,
       { opacity: 0, y: 100 },
       { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
     );
 
-    // Scroll-based animation
+    //Scroll-based animation for Arya and Shrestha
     const scrollAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: "#hero",
@@ -49,30 +49,32 @@ const Hero = () => {
   }, []);
 
   return (
-    <section
-      id="hero"
-      className="min-h-screen bg-black text-white flex flex-col items-center justify-center space-y-10 overflow-hidden"
-    >
-      <h1
-        ref={trigRef}
-        className="text-9xl font-thin whitespace-nowrap"
+    <>
+      <section
+        id="hero"
+        className="min-h-screen bg-transparent text-white flex flex-col items-center justify-center space-y-10 overflow-hidden"
       >
-        Arya Arya Arya Arya Arya Arya Arya Arya Arya Arya
-      </h1>
-      <h1
-        ref={trigRefTwo}
-        className="text-9xl font-bold whitespace-nowrap"
-      >
-        Shrestha Shrestha Shrestha Shrestha Shrestha Shrestha
-      </h1>
-      <button
-        ref={btnRef}
-        className="flex-center bg-transparent border-2 border-amber-50 transition-smooth rounded-full px-8 py-2 text-2xl
-        hover:bg-white hover:text-black"
-      >
-        resume
-      </button>
-    </section>
+        <h1
+          ref={trigRef}
+          className="text-9xl font-thin whitespace-nowrap"
+        >
+          Arya Arya Arya Arya Arya Arya Arya Arya Arya Arya
+        </h1>
+        <h1
+          ref={trigRefTwo}
+          className="text-9xl font-bold whitespace-nowrap"
+        >
+          Shrestha Shrestha Shrestha Shrestha Shrestha Shrestha
+        </h1>
+        <button
+          ref={btnRef}
+          className="flex-center bg-transparent border-2 border-amber-50 transition-smooth rounded-full px-8 py-2 text-2xl
+          hover:bg-white hover:text-black"
+        >
+          resume
+        </button>
+      </section>
+    </>
   );
 };
 

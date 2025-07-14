@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { navLinks } from '/constants/index.js';
 import { gsap } from 'gsap';
 
@@ -13,12 +13,13 @@ const Navbar = () => {
     gsap.to(navRef.current, { y: 0, scale: 1, boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)', duration: 0.4, ease: 'power2.inOut' });
   };
 
+
   return (
     <nav>
       <div
         id='navbar-gsap'
         ref={navRef}
-        className='bg-gradient-to-r from-gray-900 via-transparent to-gray-900 rounded-full my-7 px-6 py-3'
+        className='bg-gradient-to-r from-black via-transparent to-black rounded-full my-7 px-6 py-3'
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
